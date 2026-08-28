@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio for a data science graduate featuring projects, resume, and contact information.">
+  <title>Nomin Batjargal | Data Science Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pixelify+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Home">
+        <span>Nomin Batjargal</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a class="active" href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="resume.html">Resume</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+      <div class="hero-content">
+        <div class="hero-identity">
+          <p class="eyebrow">Data Science Graduate</p>
+          <h1>Nomin Batjargal</h1>
+          <div class="hero-contact" aria-label="Contact information">
+            <a href="mailto:nomin.batjargal.33@gmail.com">nomin.batjargal.33@gmail.com</a>
+            <a href="https://www.linkedin.com/in/nomin-batjargal/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://github.com/nomin709" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+        <div class="hero-about">
+          <div>
+            <h2>About Me</h2>
+            <p class="hero-copy">
+              I turn messy data into clear models, readable dashboards, and practical recommendations for teams that need evidence before action. I enjoy combining statistics, machine learning, visualization, and storytelling to build work that people can trust.
+            </p>
+          </div>
+          <div class="hero-actions">
+            <a class="button primary" href="projects.html">View Projects</a>
+            <a class="button secondary" href="resume.html">See Resume</a>
+          </div>
+        </div>
+      </div>
+      </section>
+
+      <section class="section">
+      <div class="section-inner">
+        <div class="section-heading featured-projects-heading">
+          <div>
+            <p class="eyebrow">Featured Work</p>
+            <div class="featured-title-row">
+              <h2>Featured Projects</h2>
+              <a class="button compact" href="projects.html">See More -></a>
+            </div>
+            <p>
+              See the <a href="projects.html">Projects</a> page for more details and additional work.
+            </p>
+          </div>
+        </div>
+        <div class="card-grid">
+          <article class="project-card">
+            <div class="project-visual forecast">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <p class="project-type">Time Series</p>
+            <h3>Retail Demand Forecasting</h3>
+            <p>Built forecasting models to estimate weekly demand and reduce inventory variance across product categories.</p>
+            <a href="projects.html#forecasting">View Project</a>
+          </article>
+          <article class="project-card">
+            <div class="project-visual cluster">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <p class="project-type">Machine Learning</p>
+            <h3>Customer Segmentation</h3>
+            <p>Used clustering and feature analysis to identify customer groups and recommend targeted retention actions.</p>
+            <a href="projects.html#segmentation">View Project</a>
+          </article>
+          <article class="project-card">
+            <div class="project-visual nlp">
+              <span>sentiment</span><span>topic</span><span>intent</span><span>risk</span>
+            </div>
+            <p class="project-type">NLP</p>
+            <h3>Review Sentiment Analyzer</h3>
+            <p>Created a text classification workflow that converts product reviews into sentiment trends and issue themes.</p>
+            <a href="projects.html#nlp">View Project</a>
+          </article>
+        </div>
+      </div>
+      </section>
+
+      <section class="section stats-band">
+      <div class="section-inner stats-grid">
+        <div>
+          <strong>Python</strong>
+          <span>Pandas, scikit-learn, NumPy</span>
+        </div>
+        <div>
+          <strong>Analytics</strong>
+          <span>SQL, experimentation, visualization</span>
+        </div>
+        <div>
+          <strong>Storytelling</strong>
+          <span>Dashboards, reports, stakeholder decks</span>
+        </div>
+      </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Nomin Batjargal.</p>
+      <div>
+        <a href="mailto:nomin.batjargal.33@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/nomin-batjargal/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/nomin709" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
