@@ -712,7 +712,7 @@ h3 {
   right: 3px;
   width: 32px;
   height: 32px;
-  background: url("assets/pin.png") center / contain no-repeat;
+  background: url("assets/pin.webp") center / contain no-repeat;
   pointer-events: none;
 }
 

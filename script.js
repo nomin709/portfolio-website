@@ -55,7 +55,10 @@ if (resumeCard && resumeCollapse) {
   });
 }
 
-const projectCards = document.querySelectorAll(".case-study");
+/* =========================================================
+   PROJECT MODAL & DATA RENDERING
+========================================================= */
+
 const projectModal = document.querySelector("#project-modal");
 const projectModalType = document.querySelector("#project-modal-type");
 const projectModalTitle = document.querySelector("#project-modal-title");
@@ -65,67 +68,82 @@ const projectModalDetails = document.querySelector("#project-modal-details");
 const projectModalMeta = document.querySelector("#project-modal-meta");
 const projectModalClose = document.querySelector(".project-modal-close");
 
-const openProjectModal = (projectCard) => {
-  const details = projectCard.querySelector(".project-details");
-  const type = projectCard.querySelector(".project-type");
-  const title = projectCard.querySelector("h2");
-  const visual = projectCard.querySelector(".project-visual");
-  const summary = projectCard.querySelector("p:not(.project-type)");
-  const meta = projectCard.querySelector(".project-meta");
+function createVisualHTML(visual, title) {
+  if (!visual) return '<div class="project-visual"></div>';
+  if (visual.type === "image") {
+    return `
+      <div class="project-visual">
+        <img src="${visual.src}" alt="${visual.alt || title}" loading="lazy" />
+      </div>`;
+  }
+  if (visual.type === "forecast") {
+    return `
+      <div class="project-visual forecast">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>`;
+  }
+  if (visual.type === "cluster") {
+    return `
+      <div class="project-visual cluster">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>`;
+  }
+  if (visual.type === "nlp") {
+    const tags = visual.tags || ["NLP", "Text", "ML"];
+    return `
+      <div class="project-visual nlp">
+        ${tags.map(t => `<span>${t}</span>`).join("")}
+      </div>`;
+  }
+  if (visual.type === "dashboard") {
+    return `
+      <div class="project-visual dashboard">
+        <span></span><span></span><span></span><span></span>
+      </div>`;
+  }
+  return '<div class="project-visual"></div>';
+}
 
-  if (!projectModal || !details || !type || !title || !visual || !summary || !meta) return;
-
-  projectCards.forEach((card) => {
-    const cardToggle = card.querySelector(".project-toggle");
-    card.classList.toggle("is-open", card === projectCard);
-    if (cardToggle) cardToggle.setAttribute("aria-expanded", String(card === projectCard));
-  });
-
-  projectModalType.textContent = type.textContent;
-  projectModalTitle.textContent = title.textContent;
-  projectModalSummary.textContent = summary.textContent.trim();
-  projectModalVisual.replaceChildren(visual.cloneNode(true));
-  projectModalDetails.replaceChildren(...Array.from(details.childNodes).map((node) => node.cloneNode(true)));
-  projectModalMeta.replaceChildren(...Array.from(meta.childNodes).map((node) => node.cloneNode(true)));
-  projectModal.hidden = false;
-  document.body.classList.add("modal-open");
-  projectModalClose.focus();
-};
-
-const closeProjectModal = () => {
+function openProjectModalData(project) {
   if (!projectModal) return;
 
+  projectModalType.textContent = project.type;
+  projectModalTitle.textContent = project.title;
+  projectModalSummary.textContent = project.summary;
+  projectModalVisual.innerHTML = createVisualHTML(project.visual, project.title);
+
+  let detailsHTML = `<p>${project.details.overview}</p>`;
+  if (project.details.problem || project.details.methods || project.details.outcome) {
+    detailsHTML += `
+      <ul class="detail-list">
+        ${project.details.problem ? `<li><strong>Problem:</strong> ${project.details.problem}</li>` : ""}
+        ${project.details.methods ? `<li><strong>Methods:</strong> ${project.details.methods}</li>` : ""}
+        ${project.details.outcome ? `<li><strong>Outcome:</strong> ${project.details.outcome}</li>` : ""}
+      </ul>`;
+  }
+
+  if (project.links && project.links.length > 0) {
+    detailsHTML += `
+      <p class="detail-links">
+        ${project.links.map(l => `<a href="${l.url}" target="_blank" rel="noreferrer">${l.label}</a>`).join(" ")}
+      </p>`;
+  }
+
+  projectModalDetails.innerHTML = detailsHTML;
+  projectModalMeta.innerHTML = `
+    <span>${project.tags ? project.tags.join(", ") : ""}</span>
+    <strong>${project.year}</strong>
+  `;
+
+  projectModal.hidden = false;
+  document.body.classList.add("modal-open");
+  if (projectModalClose) projectModalClose.focus();
+}
+
+function closeProjectModal() {
+  if (!projectModal) return;
   projectModal.hidden = true;
   document.body.classList.remove("modal-open");
-  projectCards.forEach((card) => {
-    const toggle = card.querySelector(".project-toggle");
-    card.classList.remove("is-open");
-    if (toggle) toggle.setAttribute("aria-expanded", "false");
-  });
-};
-
-projectCards.forEach((projectCard) => {
-  const toggle = projectCard.querySelector(".project-toggle");
-
-  projectCard.addEventListener("click", (event) => {
-    if (event.target.closest("a")) return;
-    openProjectModal(projectCard);
-  });
-
-  if (toggle) {
-    toggle.addEventListener("click", (event) => {
-      event.stopPropagation();
-      openProjectModal(projectCard);
-    });
-  }
-});
-
-if (window.location.hash && projectCards.length) {
-  const selectedProject = document.querySelector(window.location.hash);
-
-  if (selectedProject && selectedProject.classList.contains("case-study")) {
-    openProjectModal(selectedProject);
-  }
 }
 
 if (projectModal) {
@@ -142,132 +160,66 @@ if (projectModal) {
   });
 }
 
-const canvas = document.querySelector("#data-canvas");
+/* Render Projects on projects.html and index.html */
+async function initProjects() {
+  const projectsContainer = document.querySelector("[data-projects-container]");
+  const featuredContainer = document.querySelector("[data-featured-source]");
 
-if (canvas) {
-  const ctx = canvas.getContext("2d");
-  const points = [];
-  const colors = ["#ffe26d", "#70a954", "#23b08d", "#e98245"];
-  let width = 0;
-  let height = 0;
-  let animationFrame = 0;
+  if (!projectsContainer && !featuredContainer) return;
 
-  const resizeCanvas = () => {
-    const ratio = window.devicePixelRatio || 1;
-    width = canvas.offsetWidth;
-    height = canvas.offsetHeight;
-    canvas.width = width * ratio;
-    canvas.height = height * ratio;
-    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-  };
+  try {
+    const response = await fetch("lib/projects.json");
+    const projects = await response.json();
 
-  const seedPoints = () => {
-    points.length = 0;
-    const count = Math.max(42, Math.floor(width / 22));
+    // 1. Render all projects on projects.html
+    if (projectsContainer) {
+      projectsContainer.innerHTML = projects.map(p => `
+        <article id="${p.id}" class="case-study" ${p.featured ? 'data-featured="true"' : ""}>
+          <p class="project-type">${p.type}</p>
+          <h2>${p.title}</h2>
+          ${createVisualHTML(p.visual, p.title)}
+          <p>${p.summary}</p>
+          <div class="project-meta">
+            <span>${p.tags ? p.tags.join(", ") : ""}</span>
+            <strong>${p.year}</strong>
+          </div>
+        </article>
+      `).join("");
 
-    for (let index = 0; index < count; index += 1) {
-      points.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        radius: Math.random() * 2.6 + 1.4,
-        color: colors[index % colors.length],
+      projectsContainer.querySelectorAll(".case-study").forEach((card, idx) => {
+        card.addEventListener("click", (e) => {
+          if (e.target.closest("a")) return;
+          openProjectModalData(projects[idx]);
+        });
+      });
+
+      // Handle direct hash navigation (e.g., projects.html#neutrino)
+      if (window.location.hash) {
+        const targetId = window.location.hash.substring(1);
+        const match = projects.find(p => p.id === targetId);
+        if (match) openProjectModalData(match);
+      }
+    }
+
+    // 2. Render featured projects on index.html
+    if (featuredContainer) {
+      const featured = projects.filter(p => p.featured);
+      featuredContainer.innerHTML = featured.map(p => `
+        <article class="project-card">
+          ${createVisualHTML(p.visual, p.title)}
+          <p class="project-type">${p.type}</p>
+          <h3>${p.title}</h3>
+          <p>${p.summary}</p>
+        </article>
+      `).join("");
+
+      featuredContainer.querySelectorAll(".project-card").forEach((card, idx) => {
+        card.addEventListener("click", () => openProjectModalData(featured[idx]));
       });
     }
-  };
-
-  const draw = () => {
-    ctx.clearRect(0, 0, width, height);
-
-    points.forEach((point, index) => {
-      point.x += point.vx;
-      point.y += point.vy;
-
-      if (point.x < 0 || point.x > width) point.vx *= -1;
-      if (point.y < 0 || point.y > height) point.vy *= -1;
-
-      for (let nextIndex = index + 1; nextIndex < points.length; nextIndex += 1) {
-        const nextPoint = points[nextIndex];
-        const distance = Math.hypot(point.x - nextPoint.x, point.y - nextPoint.y);
-
-        if (distance < 145) {
-          ctx.beginPath();
-          ctx.moveTo(point.x, point.y);
-          ctx.lineTo(nextPoint.x, nextPoint.y);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${0.16 - distance / 1000})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-      }
-
-      ctx.beginPath();
-      ctx.arc(point.x, point.y, point.radius, 0, Math.PI * 2);
-      ctx.fillStyle = point.color;
-      ctx.fill();
-    });
-
-    animationFrame = requestAnimationFrame(draw);
-  };
-
-  const reset = () => {
-    cancelAnimationFrame(animationFrame);
-    resizeCanvas();
-    seedPoints();
-    draw();
-  };
-
-  window.addEventListener("resize", reset);
-  reset();
+  } catch (error) {
+    console.error("Failed to load projects.json:", error);
+  }
 }
 
-const featuredGrid = document.querySelector("[data-featured-source]");
-
-if (featuredGrid) {
-  const sourceUrl = featuredGrid.getAttribute("data-featured-source");
-
-  fetch(sourceUrl)
-    .then((response) => response.text())
-    .then((html) => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, "text/html");
-      const featured = Array.from(doc.querySelectorAll('[data-featured="true"]'));
-
-      if (!featured.length) return;
-
-      featuredGrid.replaceChildren(
-        ...featured.map((article) => {
-          const card = document.createElement("article");
-          card.className = "project-card";
-
-          const visual = article.querySelector(".project-visual");
-          if (visual) card.appendChild(visual.cloneNode(true));
-
-          const type = article.querySelector(".project-type");
-          if (type) {
-            const typeEl = document.createElement("p");
-            typeEl.className = "project-type";
-            typeEl.textContent = type.textContent;
-            card.appendChild(typeEl);
-          }
-
-          const title = article.querySelector("h2");
-          const titleEl = document.createElement("h3");
-          titleEl.textContent = title ? title.textContent : "";
-          card.appendChild(titleEl);
-
-          const summary = article.querySelector("p:not(.project-type)");
-          const summaryEl = document.createElement("p");
-          summaryEl.textContent = summary ? summary.textContent.trim() : "";
-          card.appendChild(summaryEl);
-
-          card.addEventListener("click", () => openProjectModal(article));
-
-          return card;
-        })
-      );
-    })
-    .catch(() => {
-      // Fetch failed — keep the static fallback cards already in index.html.
-    });
-}
+document.addEventListener("DOMContentLoaded", initProjects);

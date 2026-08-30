@@ -1,0 +1,207 @@
+[
+  {
+    "id": "neutrino",
+    "title": "Hunting for Ghost Particles",
+    "type": "Particle Physics · ML",
+    "year": 2026,
+    "featured": true,
+    "visual": {
+      "type": "image",
+      "src": "assets/neutrino.webp",
+      "alt": "Neutrino Hunting website screenshot"
+    },
+    "summary": "Built a reproducible ML pipeline to classify particle interactions from detector waveform data collected by the Majorana Demonstrator experiment.",
+    "details": {
+      "overview": "A capstone project analyzing waveform signals from high-purity germanium detectors to identify characteristics of particle interactions, packaged as a Dockerized pipeline for full reproducibility.",
+      "problem": "distinguish event types and estimate energy from raw detector waveforms.",
+      "methods": "time- and frequency-domain feature extraction, classification and regression models (scikit-learn, XGBoost, LightGBM), Docker-based reproducibility.",
+      "outcome": "generated energy spectrum visualizations and applied trained models to an unseen prediction dataset."
+    },
+    "tags": ["Python", "scikit-learn", "XGBoost", "Docker"],
+    "links": [
+      { "label": "GitHub Repo", "url": "https://github.com/YooNice100/Majorana-Neutrino-Hunt" },
+      { "label": "Project Site", "url": "https://yoonice100.github.io/majorana-neutrino-hunt-website/" }
+    ]
+  },
+  {
+    "id": "recipes",
+    "title": "Recipe Simplicity Analysis",
+    "type": "Data Analysis · Regression",
+    "year": 2025,
+    "featured": true,
+    "visual": {
+      "type": "forecast"
+    },
+    "summary": "Analyzed Food.com recipe data to find which recipe types need fewer steps, then built a model to predict step count from recipe features.",
+    "details": {
+      "overview": "Explored over 80,000 recipes and 700,000+ user interactions to identify which recipe categories tend to be quickest to prepare, then framed step-count prediction as a regression problem.",
+      "problem": "find recipe types that are simpler and faster to prepare, and predict a recipe's number of steps.",
+      "methods": "data cleaning, hypothesis testing and permutation tests, missingness analysis, tuned Random Forest Regressor.",
+      "outcome": "cut test RMSE from 5.52 to 3.93 by adding tags and ratings as features and tuning hyperparameters."
+    },
+    "tags": ["Python", "pandas", "scikit-learn"],
+    "links": [
+      { "label": "GitHub Repo", "url": "https://github.com/nomin709/analysis_for_recipes" },
+      { "label": "Project Site", "url": "https://nomin709.github.io/analysis_for_recipes/" }
+    ]
+  },
+  {
+    "id": "hospital-stay",
+    "title": "Hospital Stay Predictors",
+    "type": "Interactive Visualization",
+    "year": 2025,
+    "featured": true,
+    "visual": {
+      "type": "dashboard"
+    },
+    "summary": "Built an interactive, scrollytelling site exploring which preoperative and demographic factors most affect how long patients stay in the hospital.",
+    "details": {
+      "overview": "Using a Korean hospital dataset from VitalDB, this project surfaces the preoperative factors most linked to longer hospital stays and lets visitors filter patients and explore the effect of each variable.",
+      "problem": "identify which preoperative and demographic features most influence hospital stay length.",
+      "methods": "Random Tree Classifier for feature importance, D3.js and Chart.js scrollytelling visuals, an interactive filter tool.",
+      "outcome": "highlighted preoperative albumin and operation type as top predictors, with an interactive tool for exploring other variables."
+    },
+    "tags": ["D3.js", "Chart.js", "JavaScript"],
+    "links": [
+      { "label": "GitHub Repo", "url": "https://github.com/beseo/DSC106-Final-Project" },
+      { "label": "Project Site", "url": "https://beseo.github.io/DSC106-Final-Project/" }
+    ]
+  },
+  {
+    "id": "bikewatching",
+    "title": "Bikewatching",
+    "type": "Data Visualization · Mapping",
+    "year": 2025,
+    "featured": false,
+    "visual": {
+      "type": "image",
+      "src": "assets/bikewatching.png",
+      "alt": "bikewatching project screenshot"
+    },
+    "summary": "An immersive, interactive map visualization of bike traffic in the Boston area during different times of the day, with a time-of-day slider to filter trips.",
+    "details": {
+      "overview": "A live station map that layers bike-share trip data over a Mapbox base map, letting visitors scrub through the day to see how traffic patterns shift at each station.",
+      "problem": "show how bike-share traffic flow changes throughout the day at a station level.",
+      "methods": "Mapbox GL for the base map, D3 for overlaying station markers, a time-of-day slider, and a color-coded departures/arrivals legend.",
+      "outcome": "an at-a-glance view of which stations accumulate or deplete bikes as the day progresses."
+    },
+    "tags": ["JavaScript", "D3.js", "Mapbox GL"],
+    "links": [
+      { "label": "GitHub Repo", "url": "https://github.com/nomin709/bikewatching" },
+      { "label": "Project Site", "url": "https://nomin709.github.io/bikewatching/" }
+    ]
+  },
+  {
+    "id": "portfolio-website",
+    "title": "Personal Portfolio Website",
+    "type": "Web Development",
+    "year": 2026,
+    "featured": false,
+    "visual": {
+      "type": "nlp",
+      "tags": ["HTML", "CSS", "JS", "Design"]
+    },
+    "summary": "The personal portfolio site you're browsing right now, hand-built with a custom light/dark theme, retro pixel styling, and interactive project popups.",
+    "details": {
+      "overview": "A fully custom personal site with no frameworks, covering the homepage, project showcase, and embedded resume, styled around a distinct pixel/retro visual identity.",
+      "problem": "needed a personal site to showcase projects, resume, and contact info with a distinct look.",
+      "methods": "hand-written HTML/CSS/JS, CSS custom properties for light/dark theming, and an accessible modal system for project details.",
+      "outcome": "a fully responsive, dependency-free site deployed on GitHub Pages."
+    },
+    "tags": ["HTML", "CSS", "JavaScript"],
+    "links": [
+      { "label": "GitHub Repo", "url": "https://github.com/nomin709/portfolio-website" },
+      { "label": "Project Site", "url": "https://nomin709.github.io/portfolio-website/" }
+    ]
+  },
+  {
+    "id": "sunshine-music",
+    "title": "Bright Rhythms in the Rays",
+    "type": "Data Visualization · EDA",
+    "year": 2024,
+    "featured": false,
+    "visual": {
+      "type": "image",
+      "src": "assets/sunshine-rhythms.webp",
+      "alt": "Sunshine vs EDM and R&B Streams Chart"
+    },
+    "summary": "Analyzed and visualized the relationship between monthly sunshine duration and seasonal music streaming trends across contrasting genres (EDM vs. R&B).",
+    "details": {
+      "overview": "A data visualization project combining multi-city US historical weather data with US Spotify Top 200 daily streaming datasets (2017–2021) to explore how seasonal sunshine patterns correlate with mood and genre popularity.",
+      "problem": "assess whether seasonal sunshine variations correlate with listener preferences for energetic music (EDM) versus mellow genres (R&B).",
+      "methods": "multi-source data aggregation, date parsing, z-score standardization for multi-scale time series, side-by-side comparative chart design (pandas, Matplotlib, Plotly).",
+      "outcome": "identified a strong positive correlation between peak sunshine months and EDM streams, alongside an inverse trend for R&B popularity during high-sunshine summer periods."
+    },
+    "tags": ["Python", "pandas", "Matplotlib", "Plotly"],
+    "links": [
+      { "label": "GitHub Repo", "url": "#" },
+      { "label": "Project Report", "url": "#" }
+    ]
+  },
+  {
+    "id": "theremin-ml",
+    "title": "ESP32 Smart Theremin & Gesture ML",
+    "type": "Embedded Systems · TinyML · IoT",
+    "year": 2026,
+    "featured": false,
+    "visual": {
+      "type": "cluster"
+    },
+    "summary": "Built an end-to-end TinyML gesture recognition system on an ESP32 microcontroller using ultrasonic and optical sensor data to classify physical hand interactions in real time.",
+    "details": {
+      "overview": "An 8-phase embedded machine learning project utilizing an ESP32 development board paired with ultrasonic distance and photoresistor modules to collect labeled sensor time-series, benchmark classical ML and deep learning models, and deploy on-device TinyML inference.",
+      "problem": "capture multi-sensor continuous motion data and accurately classify distinct physical hand gestures with low latency on resource-constrained hardware.",
+      "methods": "Arduino/C++ firmware timing optimization, signal filtering, time-domain feature engineering, model benchmarking (classical vs. deep learning), TinyML on-device deployment, and interactive Plotly Dash visualization.",
+      "outcome": "successfully classified 5 core musical gestures (hold, glide, wave, swipe, mute) with real-time feedback and edge inference."
+    },
+    "tags": ["C++", "ESP32", "Python", "TinyML", "Plotly Dash"],
+    "links": [
+      { "label": "GitHub Repo", "url": "#" },
+      { "label": "Interactive Dashboard", "url": "#" }
+    ]
+  },
+  {
+    "id": "ds-career-analysis",
+    "title": "Career Landscape in Data Science & ML",
+    "type": "Data Analysis · EDA",
+    "year": 2024,
+    "featured": false,
+    "visual": {
+      "type": "cluster"
+    },
+    "summary": "Conducted an exploratory data analysis on 20,000+ global Kaggle survey responses to uncover industry hiring requirements, compensation drivers, and technical tooling trends.",
+    "details": {
+      "overview": "A comprehensive career analytics study using Kaggle's community survey dataset (171 countries/territories) to evaluate educational qualifications, compensation benchmarks, task distributions across job roles, and core data science workflows.",
+      "problem": "assess how educational degrees, technical experience (coding vs. ML), and global market demand influence role responsibilities and earning potential.",
+      "methods": "categorical survey data cleaning, multiple-response frequency aggregation, contingency table analysis, cross-regional filtering, and multivariate visualization using R (tidyverse, dplyr, ggplot2, tidyr).",
+      "outcome": "identified master's degrees as dominant in analytics/business roles (~50%) and PhDs in research (58%); found coding experience positively correlates with salary while ML experience showed negligible standalone correlation; mapped Python (~40%), SQL (~20%), and R (~15%) as top languages alongside linear/logistic regression (25%) and tree ensembles (35%)."
+    },
+    "tags": ["R", "ggplot2", "dplyr", "tidyr", "EDA"],
+    "links": [
+      { "label": "GitHub Repo", "url": "#" },
+      { "label": "Project Report", "url": "#" }
+    ]
+  },
+  {
+    "id": "snowfall-prediction",
+    "title": "Predictive Modeling of Daily Snowfall",
+    "type": "Machine Learning · Environmental Data Science",
+    "year": 2024,
+    "featured": false,
+    "visual": {
+      "type": "cluster"
+    },
+    "summary": "Trained Random Forest and XGBoost regression models on 49 years of Sierra Nevada climate data to predict daily snowfall accumulation from temperature and humidity patterns[cite: 6].",
+    "details": {
+      "overview": "A data science study analyzing 11,444 winter-season daily records (1970–2019) from UC Berkeley's Central Sierra Snow Lab and NOAA weather stations to model non-linear precipitation dynamics for California water management[cite: 6].",
+      "problem": "accurately estimate total daily snowfall depth (cm) in the Sierra Nevada during snow-prone months (October through May) using surface temperature and humidity features[cite: 6].",
+      "methods": "multi-source dataset merging, seasonal filtering, zero-inflation analysis, EDA, Random Forest Regression, and XGBoost modeling (Python, pandas, scikit-learn, XGBoost, seaborn)[cite: 6].",
+      "outcome": "XGBoost achieved an RMSE of 7.42 cm and an R² of 0.490, highlighting maximum temperature and relative humidity as primary predictors while identifying the challenges of extreme tail-event underprediction[cite: 6]."
+    },
+    "tags": ["Python", "scikit-learn", "XGBoost", "pandas", "seaborn"],
+    "links": [
+      { "label": "GitHub Repo", "url": "#" },
+      { "label": "Project Notebook", "url": "#" }
+    ]
+  }
+]

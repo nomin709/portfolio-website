@@ -40,92 +40,68 @@
 
     <main>
       <section class="hero">
-      <div class="hero-content">
-        <div class="hero-identity">
-          <p class="eyebrow">Hello, My name is</p>
-          <h1>Nomin Batjargal</h1>
-          <div class="hero-contact" aria-label="Contact information">
-            <a href="mailto:nomin.batjargal.33@gmail.com">nomin.batjargal.33@gmail.com</a>
-            <a href="https://www.linkedin.com/in/nomin-batjargal/" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="https://github.com/nomin709" target="_blank" rel="noreferrer">GitHub</a>
+        <div class="hero-content">
+          <div class="hero-identity">
+            <p class="eyebrow">Hello, My name is</p>
+            <h1>Nomin Batjargal</h1>
+            <div class="hero-contact" aria-label="Contact information">
+              <a href="mailto:nomin.batjargal.33@gmail.com">nomin.batjargal.33@gmail.com</a>
+              <a href="https://www.linkedin.com/in/nomin-batjargal/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="https://github.com/nomin709" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
+          <div class="hero-about">
+            <div>
+              <p class="hero-copy">
+                I turn messy data into clear models, readable dashboards, and practical recommendations for teams that need evidence before action. I enjoy combining statistics, machine learning, visualization, and storytelling to build work that people can trust.
+              </p>
+            </div>
           </div>
         </div>
-        <div class="hero-about">
-          <div>
-            <p class="hero-copy">
-              I turn messy data into clear models, readable dashboards, and practical recommendations for teams that need evidence before action. I enjoy combining statistics, machine learning, visualization, and storytelling to build work that people can trust.
-            </p>
-          </div>
-        </div>
-      </div>
       </section>
 
       <section class="section">
-      <div class="section-inner">
-        <div class="section-heading featured-projects-heading">
-          <div>
-            <p class="eyebrow">About Me</p>
-            <div class="featured-title-row">
-              <h2>About Me</h2>
+        <div class="section-inner">
+          <div class="section-heading featured-projects-heading">
+            <div>
+              <p class="eyebrow">About Me</p>
+              <div class="featured-title-row">
+                <h2>About Me</h2>
+              </div>
+            </div>
+            <div class="about-me">
+              <p>
+                I am a data science graduate with a strong foundation in statistics, machine learning, and data visualization. I have experience in building predictive models, analyzing complex datasets, and creating interactive dashboards to communicate insights effectively. My goal is to leverage data to drive informed decision-making and contribute to impactful projects.
+              </p>
+            </div>
+            <div>
+              <p class="eyebrow">Featured Work</p>
+              <div class="featured-title-row">
+                <h2>Featured Projects</h2>
+                <a class="button compact" href="projects.html">See More —></a>
+              </div>
             </div>
           </div>
-          <div class="about-me">
-            <p>
-              I am a data science graduate with a strong foundation in statistics, machine learning, and data visualization. I have experience in building predictive models, analyzing complex datasets, and creating interactive dashboards to communicate insights effectively. My goal is to leverage data to drive informed decision-making and contribute to impactful projects.
-            </p>
-          </div>
-          <div>
-            <p class="eyebrow">Featured Work</p>
-            <div class="featured-title-row">
-              <h2>Featured Projects</h2>
-              <a class="button compact" href="projects.html">See More —></a>
-            </div>
-          </div>
+          <!-- Loads featured cards from projects.json -->
+          <div class="card-grid" data-featured-source="lib/projects.json"></div>
         </div>
-        <div class="card-grid" data-featured-source="projects.html">
-          <article class="project-card">
-            <div class="project-visual forecast">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <p class="project-type">Time Series</p>
-            <h3>Retail Demand Forecasting</h3>
-            <p>Built forecasting models to estimate weekly demand and reduce inventory variance across product categories.</p>
-          </article>
-          <article class="project-card">
-            <div class="project-visual cluster">
-              <span></span><span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <p class="project-type">Machine Learning</p>
-            <h3>Customer Segmentation</h3>
-            <p>Used clustering and feature analysis to identify customer groups and recommend targeted retention actions.</p>
-          </article>
-          <article class="project-card">
-            <div class="project-visual nlp">
-              <span>sentiment</span><span>topic</span><span>intent</span><span>risk</span>
-            </div>
-            <p class="project-type">NLP</p>
-            <h3>Review Sentiment Analyzer</h3>
-            <p>Created a text classification workflow that converts product reviews into sentiment trends and issue themes.</p>
-          </article>
-        </div>
-      </div>
       </section>
 
       <section class="section stats-band">
-      <div class="section-inner stats-grid">
-        <div>
-          <strong>Python</strong>
-          <span>Pandas, scikit-learn, NumPy</span>
+        <div class="section-inner stats-grid">
+          <div>
+            <strong>Python</strong>
+            <span>Pandas, scikit-learn, NumPy</span>
+          </div>
+          <div>
+            <strong>Analytics</strong>
+            <span>SQL, experimentation, visualization</span>
+          </div>
+          <div>
+            <strong>Storytelling</strong>
+            <span>Dashboards, reports, stakeholder decks</span>
+          </div>
         </div>
-        <div>
-          <strong>Analytics</strong>
-          <span>SQL, experimentation, visualization</span>
-        </div>
-        <div>
-          <strong>Storytelling</strong>
-          <span>Dashboards, reports, stakeholder decks</span>
-        </div>
-      </div>
       </section>
 
       <div class="project-modal" id="project-modal" hidden>
