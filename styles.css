@@ -546,6 +546,14 @@ h3 {
   border-radius: 6px;
 }
 
+.project-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Fills entire container */
+  object-position: center; /* Or 'top' if you want to prioritize the title/top of the plot */
+  display: block;
+}
+
 .project-visual.forecast {
   display: flex;
   align-items: end;
