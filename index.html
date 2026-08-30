@@ -7,14 +7,15 @@
   <title>Nomin Batjargal | Data Science Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pixelify+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="site-shell">
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="Home">
-        <span>Nomin Batjargal</span>
+        <span>NOMIN BATJARGAL</span>
+        <span class="wip-badge">Work in Progress</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
         <span></span>
@@ -25,6 +26,15 @@
         <a class="active" href="index.html">Home</a>
         <a href="projects.html">Projects</a>
         <a href="resume.html">Resume</a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.6"></circle>
+            <path d="M12 1.8v2.4M12 19.8v2.4M4.93 4.93l1.7 1.7M17.37 17.37l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.93 19.07l1.7-1.7M17.37 6.63l1.7-1.7"></path>
+          </svg>
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.8 14.2A8.5 8.5 0 0 1 9.8 3.2a8.5 8.5 0 1 0 11 11Z"></path>
+          </svg>
+        </button>
       </nav>
     </header>
 
@@ -32,7 +42,7 @@
       <section class="hero">
       <div class="hero-content">
         <div class="hero-identity">
-          <p class="eyebrow">Data Science Graduate</p>
+          <p class="eyebrow">Hello, My name is</p>
           <h1>Nomin Batjargal</h1>
           <div class="hero-contact" aria-label="Contact information">
             <a href="mailto:nomin.batjargal.33@gmail.com">nomin.batjargal.33@gmail.com</a>
@@ -42,14 +52,9 @@
         </div>
         <div class="hero-about">
           <div>
-            <h2>About Me</h2>
             <p class="hero-copy">
               I turn messy data into clear models, readable dashboards, and practical recommendations for teams that need evidence before action. I enjoy combining statistics, machine learning, visualization, and storytelling to build work that people can trust.
             </p>
-          </div>
-          <div class="hero-actions">
-            <a class="button primary" href="projects.html">View Projects</a>
-            <a class="button secondary" href="resume.html">See Resume</a>
           </div>
         </div>
       </div>
@@ -59,17 +64,25 @@
       <div class="section-inner">
         <div class="section-heading featured-projects-heading">
           <div>
+            <p class="eyebrow">About Me</p>
+            <div class="featured-title-row">
+              <h2>About Me</h2>
+            </div>
+          </div>
+          <div class="about-me">
+            <p>
+              I am a data science graduate with a strong foundation in statistics, machine learning, and data visualization. I have experience in building predictive models, analyzing complex datasets, and creating interactive dashboards to communicate insights effectively. My goal is to leverage data to drive informed decision-making and contribute to impactful projects.
+            </p>
+          </div>
+          <div>
             <p class="eyebrow">Featured Work</p>
             <div class="featured-title-row">
               <h2>Featured Projects</h2>
-              <a class="button compact" href="projects.html">See More -></a>
+              <a class="button compact" href="projects.html">See More —></a>
             </div>
-            <p>
-              See the <a href="projects.html">Projects</a> page for more details and additional work.
-            </p>
           </div>
         </div>
-        <div class="card-grid">
+        <div class="card-grid" data-featured-source="projects.html">
           <article class="project-card">
             <div class="project-visual forecast">
               <span></span><span></span><span></span><span></span><span></span>
@@ -77,7 +90,6 @@
             <p class="project-type">Time Series</p>
             <h3>Retail Demand Forecasting</h3>
             <p>Built forecasting models to estimate weekly demand and reduce inventory variance across product categories.</p>
-            <a href="projects.html#forecasting">View Project</a>
           </article>
           <article class="project-card">
             <div class="project-visual cluster">
@@ -86,7 +98,6 @@
             <p class="project-type">Machine Learning</p>
             <h3>Customer Segmentation</h3>
             <p>Used clustering and feature analysis to identify customer groups and recommend targeted retention actions.</p>
-            <a href="projects.html#segmentation">View Project</a>
           </article>
           <article class="project-card">
             <div class="project-visual nlp">
@@ -95,7 +106,6 @@
             <p class="project-type">NLP</p>
             <h3>Review Sentiment Analyzer</h3>
             <p>Created a text classification workflow that converts product reviews into sentiment trends and issue themes.</p>
-            <a href="projects.html#nlp">View Project</a>
           </article>
         </div>
       </div>
@@ -117,6 +127,23 @@
         </div>
       </div>
       </section>
+
+      <div class="project-modal" id="project-modal" hidden>
+        <div class="project-modal-backdrop" data-modal-close></div>
+        <article class="project-modal-card" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+          <div class="project-modal-titlebar">
+            <p class="project-modal-type" id="project-modal-type"></p>
+            <button class="project-modal-close" type="button" data-modal-close aria-label="Close project details">&times;</button>
+          </div>
+          <div class="project-modal-body">
+            <h2 id="project-modal-title"></h2>
+            <div class="project-modal-visual" id="project-modal-visual"></div>
+            <p class="project-modal-summary" id="project-modal-summary"></p>
+            <div class="project-modal-details" id="project-modal-details"></div>
+            <div class="project-modal-meta" id="project-modal-meta"></div>
+          </div>
+        </article>
+      </div>
     </main>
 
     <footer class="site-footer">

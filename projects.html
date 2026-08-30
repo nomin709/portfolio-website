@@ -7,14 +7,15 @@
   <title>Projects | Your Name</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pixelify+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="site-shell">
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="Home">
-        <span>Nomin Batjargal</span>
+        <span>NOMIN BATJARGAL</span>
+        <span class="wip-badge">Work in Progress</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
         <span></span>
@@ -25,6 +26,15 @@
         <a href="index.html">Home</a>
         <a class="active" href="projects.html">Projects</a>
         <a href="resume.html">Resume</a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.6"></circle>
+            <path d="M12 1.8v2.4M12 19.8v2.4M4.93 4.93l1.7 1.7M17.37 17.37l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.93 19.07l1.7-1.7M17.37 6.63l1.7-1.7"></path>
+          </svg>
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.8 14.2A8.5 8.5 0 0 1 9.8 3.2a8.5 8.5 0 1 0 11 11Z"></path>
+          </svg>
+        </button>
       </nav>
     </header>
 
@@ -34,7 +44,7 @@
         <div class="section-heading project-page-heading">
           <h2>Projects</h2>
           <p>
-            Each project includes a brief description, the tools and methods used, and the outcomes achieved.
+            Click any project to see more details, including links to the code and live site where available.
           </p>
         </div>
       </div>
@@ -42,107 +52,148 @@
 
       <section class="section">
       <div class="section-inner project-list">
-        <article id="forecasting" class="case-study">
-          <p class="project-type">Time Series Forecasting</p>
-          <h2>Retail Demand Forecasting</h2>
-          <div class="project-visual forecast">
-            <span></span><span></span><span></span><span></span><span></span>
-          </div>
-          <p>
-            Built a forecasting workflow for weekly product demand using feature engineering, rolling validation, and model comparison.
-          </p>
-          <button class="project-toggle" type="button" aria-expanded="false" aria-controls="forecasting-details">View Project</button>
-          <div id="forecasting-details" class="project-details" hidden>
-            <p>
-              This project focuses on predicting weekly product demand and translating model output into inventory decisions. The workflow includes data cleaning, seasonal feature creation, lag variables, rolling validation, and error analysis by product category.
-            </p>
-            <ul class="detail-list">
-              <li><strong>Problem:</strong> reduce stockouts and overstock by forecasting demand earlier.</li>
-              <li><strong>Methods:</strong> lag features, rolling averages, train-test windows, baseline comparison.</li>
-              <li><strong>Outcome:</strong> identified high-risk weeks and recommended reorder thresholds.</li>
-            </ul>
-          </div>
-          <div class="project-meta">
-            <span>Python, pandas, scikit-learn</span>
-            <strong>2026</strong>
-          </div>
-        </article>
-
-        <article id="segmentation" class="case-study">
-          <p class="project-type">Unsupervised Learning</p>
-          <h2>Customer Segmentation</h2>
+        <article id="neutrino" class="case-study" data-featured="true">
+          <p class="project-type">Particle Physics · ML</p>
+          <h2>Majorana Neutrino Hunt</h2>
           <div class="project-visual cluster">
             <span></span><span></span><span></span><span></span><span></span><span></span>
           </div>
           <p>
-            Developed customer profiles from transaction behavior and engagement metrics, then translated clusters into retention recommendations.
+            Built a reproducible ML pipeline to classify particle interactions from detector waveform data collected by the Majorana Demonstrator experiment.
           </p>
-          <button class="project-toggle" type="button" aria-expanded="false" aria-controls="segmentation-details">View Project</button>
-          <div id="segmentation-details" class="project-details" hidden>
+          <div id="neutrino-details" class="project-details" hidden>
             <p>
-              This project segments customers using behavioral signals such as purchase frequency, spend, recency, and engagement. After clustering, each segment is interpreted through visual profiles and mapped to practical retention or campaign strategies.
+              A DSC 180B capstone project analyzing waveform signals from high-purity germanium detectors to identify characteristics of particle interactions, packaged as a Dockerized pipeline for full reproducibility.
             </p>
             <ul class="detail-list">
-              <li><strong>Problem:</strong> understand different customer groups beyond average behavior.</li>
-              <li><strong>Methods:</strong> scaling, PCA, k-means, silhouette analysis, segment profiling.</li>
-              <li><strong>Outcome:</strong> created interpretable groups for targeted campaign planning.</li>
+              <li><strong>Problem:</strong> distinguish event types and estimate energy from raw detector waveforms.</li>
+              <li><strong>Methods:</strong> time- and frequency-domain feature extraction, classification and regression models (scikit-learn, XGBoost, LightGBM), Docker-based reproducibility.</li>
+              <li><strong>Outcome:</strong> generated energy spectrum visualizations and applied trained models to an unseen prediction dataset.</li>
             </ul>
+            <p class="detail-links">
+              <a href="https://github.com/YooNice100/Majorana-Neutrino-Hunt" target="_blank" rel="noreferrer">GitHub Repo</a>
+              <a href="https://yoonice100.github.io/majorana-neutrino-hunt-website/" target="_blank" rel="noreferrer">Project Site</a>
+            </p>
           </div>
           <div class="project-meta">
-            <span>SQL, Python, Power BI</span>
+            <span>Python, scikit-learn, XGBoost, Docker</span>
             <strong>2026</strong>
           </div>
         </article>
 
-        <article id="nlp" class="case-study">
-          <p class="project-type">Natural Language Processing</p>
-          <h2>Review Sentiment Analyzer</h2>
-          <div class="project-visual nlp">
-            <span>review</span><span>topic</span><span>signal</span><span>trend</span>
+        <article id="recipes" class="case-study" data-featured="true">
+          <p class="project-type">Data Analysis · Regression</p>
+          <h2>Recipe Simplicity Analysis</h2>
+          <div class="project-visual forecast">
+            <span></span><span></span><span></span><span></span><span></span>
           </div>
           <p>
-            Classified review sentiment and extracted recurring topics so product teams could see trends in unstructured feedback.
+            Analyzed Food.com recipe data to find which recipe types need fewer steps, then built a model to predict step count from recipe features.
           </p>
-          <button class="project-toggle" type="button" aria-expanded="false" aria-controls="nlp-details">View Project</button>
-          <div id="nlp-details" class="project-details" hidden>
+          <div id="recipes-details" class="project-details" hidden>
             <p>
-              This project turns product review text into measurable sentiment and topic signals. It combines preprocessing, TF-IDF features, classification, and trend summaries to reveal what customers mention most often over time.
+              Explored over 80,000 recipes and 700,000+ user interactions to identify which recipe categories tend to be quickest to prepare, then framed step-count prediction as a regression problem.
             </p>
             <ul class="detail-list">
-              <li><strong>Problem:</strong> make unstructured reviews easier to monitor and act on.</li>
-              <li><strong>Methods:</strong> text cleaning, TF-IDF, classification, topic exploration.</li>
-              <li><strong>Outcome:</strong> surfaced recurring product themes and sentiment changes.</li>
+              <li><strong>Problem:</strong> find recipe types that are simpler and faster to prepare, and predict a recipe's number of steps.</li>
+              <li><strong>Methods:</strong> data cleaning, hypothesis testing and permutation tests, missingness analysis, tuned Random Forest Regressor.</li>
+              <li><strong>Outcome:</strong> cut test RMSE from 5.52 to 3.93 by adding tags and ratings as features and tuning hyperparameters.</li>
             </ul>
+            <p class="detail-links">
+              <a href="https://github.com/nomin709/analysis_for_recipes" target="_blank" rel="noreferrer">GitHub Repo</a>
+              <a href="https://nomin709.github.io/analysis_for_recipes/" target="_blank" rel="noreferrer">Project Site</a>
+            </p>
           </div>
           <div class="project-meta">
-            <span>Python, spaCy, scikit-learn</span>
+            <span>Python, pandas, scikit-learn</span>
             <strong>2025</strong>
           </div>
         </article>
 
-        <article id="dashboard" class="case-study">
-          <p class="project-type">Business Intelligence</p>
-          <h2>Graduate Outcomes Dashboard</h2>
+        <article id="hospital-stay" class="case-study" data-featured="true">
+          <p class="project-type">Interactive Visualization</p>
+          <h2>Hospital Stay Predictors</h2>
           <div class="project-visual dashboard">
             <span></span><span></span><span></span><span></span>
           </div>
           <p>
-            Designed an interactive dashboard concept tracking outcomes, salary ranges, role categories, and skill demand.
+            Built an interactive, scrollytelling site exploring which preoperative and demographic factors most affect how long patients stay in the hospital.
           </p>
-          <button class="project-toggle" type="button" aria-expanded="false" aria-controls="dashboard-details">View Project</button>
-          <div id="dashboard-details" class="project-details" hidden>
+          <div id="hospital-stay-details" class="project-details" hidden>
             <p>
-              This dashboard concept helps compare graduate outcomes by role, region, salary band, and skill category. The focus is on choosing clear KPIs, useful filters, and visuals that make comparisons quick for viewers.
+              Using a Korean hospital dataset from VitalDB, this project surfaces the preoperative factors most linked to longer hospital stays and lets visitors filter patients and explore the effect of each variable.
             </p>
             <ul class="detail-list">
-              <li><strong>Problem:</strong> summarize graduate outcomes in a way that supports exploration.</li>
-              <li><strong>Methods:</strong> SQL aggregation, cohort filtering, KPI design, dashboard storytelling.</li>
-              <li><strong>Outcome:</strong> made role, region, and skill patterns easier to compare.</li>
+              <li><strong>Problem:</strong> identify which preoperative and demographic features most influence hospital stay length.</li>
+              <li><strong>Methods:</strong> Random Tree Classifier for feature importance, D3.js and Chart.js scrollytelling visuals, an interactive filter tool.</li>
+              <li><strong>Outcome:</strong> highlighted preoperative albumin and operation type as top predictors, with an interactive tool for exploring other variables.</li>
             </ul>
+            <p class="detail-links">
+              <a href="https://github.com/beseo/DSC106-Final-Project" target="_blank" rel="noreferrer">GitHub Repo</a>
+              <a href="https://beseo.github.io/DSC106-Final-Project/" target="_blank" rel="noreferrer">Project Site</a>
+            </p>
           </div>
           <div class="project-meta">
-            <span>SQL, Tableau, Excel</span>
+            <span>D3.js, Chart.js, JavaScript</span>
             <strong>2025</strong>
+          </div>
+        </article>
+
+        <article id="bikewatching" class="case-study">
+          <p class="project-type">Data Visualization · Mapping</p>
+          <h2>Bikewatching</h2>
+          <div class="project-visual cluster">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <p>
+            An immersive, interactive map visualization of bike traffic in the Boston area during different times of the day, with a time-of-day slider to filter trips.
+          </p>
+          <div id="bikewatching-details" class="project-details" hidden>
+            <p>
+              A live station map that layers bike-share trip data over a Mapbox base map, letting visitors scrub through the day to see how traffic patterns shift at each station.
+            </p>
+            <ul class="detail-list">
+              <li><strong>Problem:</strong> show how bike-share traffic flow changes throughout the day at a station level.</li>
+              <li><strong>Methods:</strong> Mapbox GL for the base map, D3 for overlaying station markers, a time-of-day slider, and a color-coded departures/arrivals legend.</li>
+              <li><strong>Outcome:</strong> an at-a-glance view of which stations accumulate or deplete bikes as the day progresses.</li>
+            </ul>
+            <p class="detail-links">
+              <a href="https://github.com/nomin709/bikewatching" target="_blank" rel="noreferrer">GitHub Repo</a>
+              <a href="https://nomin709.github.io/bikewatching/" target="_blank" rel="noreferrer">Project Site</a>
+            </p>
+          </div>
+          <div class="project-meta">
+            <span>JavaScript, D3.js, Mapbox GL</span>
+            <strong>2025</strong>
+          </div>
+        </article>
+
+        <article id="portfolio-website" class="case-study">
+          <p class="project-type">Web Development</p>
+          <h2>Personal Portfolio Website</h2>
+          <div class="project-visual nlp">
+            <span>HTML</span><span>CSS</span><span>JS</span><span>Design</span>
+          </div>
+          <p>
+            The personal portfolio site you're browsing right now, hand-built with a custom light/dark theme, retro pixel styling, and interactive project popups.
+          </p>
+          <div id="portfolio-website-details" class="project-details" hidden>
+            <p>
+              A fully custom personal site with no frameworks, covering the homepage, project showcase, and embedded resume, styled around a distinct pixel/retro visual identity.
+            </p>
+            <ul class="detail-list">
+              <li><strong>Problem:</strong> needed a personal site to showcase projects, resume, and contact info with a distinct look.</li>
+              <li><strong>Methods:</strong> hand-written HTML/CSS/JS, CSS custom properties for light/dark theming, and an accessible modal system for project details.</li>
+              <li><strong>Outcome:</strong> a fully responsive, dependency-free site deployed on GitHub Pages.</li>
+            </ul>
+            <p class="detail-links">
+              <a href="https://github.com/nomin709/portfolio-website" target="_blank" rel="noreferrer">GitHub Repo</a>
+              <a href="https://nomin709.github.io/portfolio-website/" target="_blank" rel="noreferrer">Project Site</a>
+            </p>
+          </div>
+          <div class="project-meta">
+            <span>HTML, CSS, JavaScript</span>
+            <strong>2026</strong>
           </div>
         </article>
       </div>
@@ -151,13 +202,17 @@
       <div class="project-modal" id="project-modal" hidden>
         <div class="project-modal-backdrop" data-modal-close></div>
         <article class="project-modal-card" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
-          <button class="project-modal-close" type="button" data-modal-close aria-label="Close project details">Close</button>
-          <p class="project-modal-type" id="project-modal-type"></p>
-          <h2 id="project-modal-title"></h2>
-          <div class="project-modal-visual" id="project-modal-visual"></div>
-          <p class="project-modal-summary" id="project-modal-summary"></p>
-          <div class="project-modal-details" id="project-modal-details"></div>
-          <div class="project-modal-meta" id="project-modal-meta"></div>
+          <div class="project-modal-titlebar">
+            <p class="project-modal-type" id="project-modal-type"></p>
+            <button class="project-modal-close" type="button" data-modal-close aria-label="Close project details">&times;</button>
+          </div>
+          <div class="project-modal-body">
+            <h2 id="project-modal-title"></h2>
+            <div class="project-modal-visual" id="project-modal-visual"></div>
+            <p class="project-modal-summary" id="project-modal-summary"></p>
+            <div class="project-modal-details" id="project-modal-details"></div>
+            <div class="project-modal-meta" id="project-modal-meta"></div>
+          </div>
         </article>
       </div>
     </main>

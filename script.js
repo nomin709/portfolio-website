@@ -1,3 +1,39 @@
+const themeToggle = document.querySelector(".theme-toggle");
+
+const applyTheme = (theme) => {
+  const isDark = theme === "dark";
+  document.body.classList.toggle("dark-theme", isDark);
+
+  if (themeToggle) {
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    themeToggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+  }
+
+  try {
+    localStorage.setItem("theme", theme);
+  } catch (error) {
+    // Ignore storage issues in restricted browsing contexts.
+  }
+};
+
+const savedTheme = (() => {
+  try {
+    return localStorage.getItem("theme");
+  } catch (error) {
+    return null;
+  }
+})();
+
+const preferredTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+applyTheme(savedTheme || preferredTheme);
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const nextTheme = document.body.classList.contains("dark-theme") ? "light" : "dark";
+    applyTheme(nextTheme);
+  });
+}
+
 const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.querySelector(".site-nav");
 
@@ -30,7 +66,6 @@ const projectModalMeta = document.querySelector("#project-modal-meta");
 const projectModalClose = document.querySelector(".project-modal-close");
 
 const openProjectModal = (projectCard) => {
-  const toggle = projectCard.querySelector(".project-toggle");
   const details = projectCard.querySelector(".project-details");
   const type = projectCard.querySelector(".project-type");
   const title = projectCard.querySelector("h2");
@@ -38,7 +73,7 @@ const openProjectModal = (projectCard) => {
   const summary = projectCard.querySelector("p:not(.project-type)");
   const meta = projectCard.querySelector(".project-meta");
 
-  if (!projectModal || !toggle || !details || !type || !title || !visual || !summary || !meta) return;
+  if (!projectModal || !details || !type || !title || !visual || !summary || !meta) return;
 
   projectCards.forEach((card) => {
     const cardToggle = card.querySelector(".project-toggle");
@@ -184,4 +219,55 @@ if (canvas) {
 
   window.addEventListener("resize", reset);
   reset();
+}
+
+const featuredGrid = document.querySelector("[data-featured-source]");
+
+if (featuredGrid) {
+  const sourceUrl = featuredGrid.getAttribute("data-featured-source");
+
+  fetch(sourceUrl)
+    .then((response) => response.text())
+    .then((html) => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+      const featured = Array.from(doc.querySelectorAll('[data-featured="true"]'));
+
+      if (!featured.length) return;
+
+      featuredGrid.replaceChildren(
+        ...featured.map((article) => {
+          const card = document.createElement("article");
+          card.className = "project-card";
+
+          const visual = article.querySelector(".project-visual");
+          if (visual) card.appendChild(visual.cloneNode(true));
+
+          const type = article.querySelector(".project-type");
+          if (type) {
+            const typeEl = document.createElement("p");
+            typeEl.className = "project-type";
+            typeEl.textContent = type.textContent;
+            card.appendChild(typeEl);
+          }
+
+          const title = article.querySelector("h2");
+          const titleEl = document.createElement("h3");
+          titleEl.textContent = title ? title.textContent : "";
+          card.appendChild(titleEl);
+
+          const summary = article.querySelector("p:not(.project-type)");
+          const summaryEl = document.createElement("p");
+          summaryEl.textContent = summary ? summary.textContent.trim() : "";
+          card.appendChild(summaryEl);
+
+          card.addEventListener("click", () => openProjectModal(article));
+
+          return card;
+        })
+      );
+    })
+    .catch(() => {
+      // Fetch failed — keep the static fallback cards already in index.html.
+    });
 }
