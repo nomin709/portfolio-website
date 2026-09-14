@@ -76,7 +76,6 @@ function createVisualHTML(visual, title) {
         <img src="${visual.src}" alt="${visual.alt || title}" loading="lazy" />
       </div>`;
   }
-
   return '<div class="project-visual"></div>';
 }
 

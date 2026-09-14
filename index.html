@@ -11,58 +11,59 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="site-shell">
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span>NOMIN BATJARGAL</span>
-        <span class="wip-badge">Work in Progress</span>
+  
+  <div class="app-layout">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="app-sidebar">
+      <a class="brand" href="index.html">
+        Nomin<br>Batjargal
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-        <a class="active" href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="resume.html">Resume</a>
-        <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
-          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="4.6"></circle>
-            <path d="M12 1.8v2.4M12 19.8v2.4M4.93 4.93l1.7 1.7M17.37 17.37l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.93 19.07l1.7-1.7M17.37 6.63l1.7-1.7"></path>
-          </svg>
-          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M20.8 14.2A8.5 8.5 0 0 1 9.8 3.2a8.5 8.5 0 1 0 11 11Z"></path>
-          </svg>
-        </button>
-      </nav>
-    </header>
+      
+      <p class="hero-copy">
+        I turn messy data into clear models, readable dashboards, and practical recommendations for teams that need evidence before action. I enjoy combining statistics, machine learning, visualization, and storytelling to build work that people can trust.
+      </p>
 
-    <main>
-      <section class="hero">
-        <div class="hero-content">
-          <div class="hero-identity">
-            <p class="eyebrow">Hello, My name is</p>
-            <h1>Nomin Batjargal</h1>
-            <div class="hero-contact" aria-label="Contact information">
-              <a href="mailto:nomin.batjargal.33@gmail.com">nomin.batjargal.33@gmail.com</a>
-              <a href="https://www.linkedin.com/in/nomin-batjargal/" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="https://github.com/nomin709" target="_blank" rel="noreferrer">GitHub</a>
-            </div>
-          </div>
-          <div class="hero-about">
-            <div>
-              <p class="hero-copy">
-                I turn messy data into clear models, readable dashboards, and practical recommendations for teams that need evidence before action. I enjoy combining statistics, machine learning, visualization, and storytelling to build work that people can trust.
-              </p>
-            </div>
-          </div>
+      <div class="sidebar-contacts">
+        <div class="hero-contact" aria-label="Contact information">
+          <a href="mailto:nomin.batjargal.33@gmail.com">nomin.batjargal.33@gmail.com</a>
+          <a href="https://github.com/nomin709" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/nomin-batjargal/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
-      </section>
+      </div>
+    </aside>
 
-      <!-- About Me Section -->
-      <section class="section about-section">
-        <div class="section-inner">
+    <!-- RIGHT MAIN SCROLLABLE AREA -->
+    <main class="app-main">
+      
+      <!-- Top Navigation -->
+      <div class="app-nav">
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a class="active" href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="resume.html">Resume</a>
+        </nav>
+        
+        <!-- Group the theme toggle and mobile menu together on the right -->
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" aria-label="Switch theme">
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4.6"></circle>
+              <path d="M12 1.8v2.4M12 19.8v2.4M4.93 4.93l1.7 1.7M17.37 17.37l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.93 19.07l1.7-1.7M17.37 6.63l1.7-1.7"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.8 14.2A8.5 8.5 0 0 1 9.8 3.2a8.5 8.5 0 1 0 11 11Z"></path>
+            </svg>
+          </button>
+
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="app-content">
+        <section class="section about-section">
           <div class="featured-title-row">
             <h2>About Me</h2>
           </div>
@@ -71,46 +72,43 @@
               I am a data science graduate with a strong foundation in statistics, machine learning, and data visualization. I have experience in building predictive models, analyzing complex datasets, and creating interactive dashboards to communicate insights effectively. My goal is to leverage data to drive informed decision-making and contribute to impactful projects.
             </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Featured Projects Section -->
-      <section class="section featured-section">
-        <div class="section-inner">
+        <section class="section featured-section">
           <div class="section-heading featured-projects-heading">
             <div class="featured-title-row">
               <h2>Featured Projects</h2>
               <a class="button compact" href="projects.html">See More —></a>
             </div>
           </div>
-          <!-- Loads featured cards from projects.json -->
           <div class="card-grid" data-featured-source="lib/projects.json"></div>
-        </div>
-      </section>
+        </section>
 
-      <section class="section stats-band">
-        <div class="section-inner stats-grid">
-          <div>
-            <strong>Python</strong>
-            <span>Pandas, scikit-learn, NumPy</span>
+        <section class="section stats-band">
+          <div class="stats-grid">
+            <div>
+              <strong>Python</strong>
+              <span>Pandas, scikit-learn, NumPy</span>
+            </div>
+            <div>
+              <strong>Analytics</strong>
+              <span>SQL, experimentation, visualization</span>
+            </div>
+            <div>
+              <strong>Storytelling</strong>
+              <span>Dashboards, reports, stakeholder decks</span>
+            </div>
           </div>
-          <div>
-            <strong>Analytics</strong>
-            <span>SQL, experimentation, visualization</span>
-          </div>
-          <div>
-            <strong>Storytelling</strong>
-            <span>Dashboards, reports, stakeholder decks</span>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
+      <!-- Project Modal -->
       <div class="project-modal" id="project-modal" hidden>
         <div class="project-modal-backdrop" data-modal-close></div>
         <article class="project-modal-card" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
           <div class="project-modal-titlebar">
             <p class="project-modal-type" id="project-modal-type"></p>
-            <button class="project-modal-close" type="button" data-modal-close aria-label="Close project details">&times;</button>
+            <button class="project-modal-close" type="button" data-modal-close aria-label="Close">&times;</button>
           </div>
           <div class="project-modal-body">
             <h2 id="project-modal-title"></h2>
@@ -121,16 +119,8 @@
           </div>
         </article>
       </div>
-    </main>
 
-    <footer class="site-footer">
-      <p>&copy; 2026 Nomin Batjargal.</p>
-      <div>
-        <a href="mailto:nomin.batjargal.33@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/nomin-batjargal/" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="https://github.com/nomin709" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
-    </footer>
+    </main>
   </div>
 
   <script src="script.js"></script>

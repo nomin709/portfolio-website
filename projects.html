@@ -11,58 +11,75 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="site-shell">
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span>NOMIN BATJARGAL</span>
-        <span class="wip-badge">Work in Progress</span>
+  
+  <div class="app-layout">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="app-sidebar">
+      <a class="brand" href="index.html">
+        Nomin<br>Batjargal
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a class="active" href="projects.html">Projects</a>
-        <a href="resume.html">Resume</a>
-        <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
-          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="4.6"></circle>
-            <path d="M12 1.8v2.4M12 19.8v2.4M4.93 4.93l1.7 1.7M17.37 17.37l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.93 19.07l1.7-1.7M17.37 6.63l1.7-1.7"></path>
-          </svg>
-          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M20.8 14.2A8.5 8.5 0 0 1 9.8 3.2a8.5 8.5 0 1 0 11 11Z"></path>
-          </svg>
-        </button>
-      </nav>
-    </header>
+      <p class="hero-copy">
+        I turn messy data into clear models, readable dashboards, and practical recommendations for teams that need evidence before action. I enjoy combining statistics, machine learning, visualization, and storytelling to build work that people can trust.
+      </p>
+      <div class="sidebar-contacts">
+        <div class="hero-contact" aria-label="Contact information">
+          <a href="mailto:nomin.batjargal.33@gmail.com">nomin.batjargal.33@gmail.com</a>
+          <a href="https://github.com/nomin709" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/nomin-batjargal/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </aside>
 
-    <main>
-      <section class="section project-intro">
-        <div class="section-inner">
-          <div class="section-heading project-page-heading">
-            <h2>Projects</h2>
-            <p>
-              Click any project to see more details, including links to the code and live site where available.
-            </p>
-            <!-- Filter buttons will be injected here automatically -->
-            <div class="project-filter-bar" id="filter-bar"></div>
+    <!-- RIGHT MAIN SCROLLABLE AREA -->
+    <main class="app-main">
+        <!-- Top Navigation -->
+        <div class="app-nav">
+          <nav class="site-nav" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <a class="active" href="projects.html">Projects</a>
+            <a href="resume.html">Resume</a>
+          </nav>
+          
+          <!-- Group the theme toggle and mobile menu together on the right -->
+          <div class="nav-actions">
+            <button class="theme-toggle" type="button" aria-label="Switch theme">
+              <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4.6"></circle>
+                <path d="M12 1.8v2.4M12 19.8v2.4M4.93 4.93l1.7 1.7M17.37 17.37l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.93 19.07l1.7-1.7M17.37 6.63l1.7-1.7"></path>
+              </svg>
+              <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.8 14.2A8.5 8.5 0 0 1 9.8 3.2a8.5 8.5 0 1 0 11 11Z"></path>
+              </svg>
+            </button>
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation">
+              <span></span><span></span><span></span>
+            </button>
           </div>
         </div>
-      </section>
 
-      <section class="section">
-        <!-- Target container for dynamically rendered projects -->
-        <div class="section-inner project-list" data-projects-container></div>
-      </section>
+      <div class="app-content">
+        <section class="section project-intro">
+          <div class="section-heading project-page-heading">
+            <h2>Projects</h2>
+            <p>Click any project to see more details, including links to the code and live site where available.</p>
+            <div class="project-filter-bar" id="filter-bar"></div>
+          </div>
+        </section>
 
+        <section class="section">
+          <div class="project-list" data-projects-container></div>
+        </section>
+      </div>
+
+      <!-- Project Modal -->
       <div class="project-modal" id="project-modal" hidden>
         <div class="project-modal-backdrop" data-modal-close></div>
         <article class="project-modal-card" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
           <div class="project-modal-titlebar">
             <p class="project-modal-type" id="project-modal-type"></p>
-            <button class="project-modal-close" type="button" data-modal-close aria-label="Close project details">&times;</button>
+            <button class="project-modal-close" type="button" data-modal-close aria-label="Close">&times;</button>
           </div>
           <div class="project-modal-body">
             <h2 id="project-modal-title"></h2>
@@ -73,16 +90,8 @@
           </div>
         </article>
       </div>
-    </main>
 
-    <footer class="site-footer">
-      <p>&copy; 2026 Nomin Batjargal.</p>
-      <div>
-        <a href="mailto:nomin.batjargal.33@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/nomin-batjargal/" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="https://github.com/nomin709" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
-    </footer>
+    </main>
   </div>
 
   <script src="script.js"></script>
