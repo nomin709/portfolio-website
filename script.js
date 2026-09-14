@@ -76,31 +76,7 @@ function createVisualHTML(visual, title) {
         <img src="${visual.src}" alt="${visual.alt || title}" loading="lazy" />
       </div>`;
   }
-  if (visual.type === "forecast") {
-    return `
-      <div class="project-visual forecast">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>`;
-  }
-  if (visual.type === "cluster") {
-    return `
-      <div class="project-visual cluster">
-        <span></span><span></span><span></span><span></span><span></span><span></span>
-      </div>`;
-  }
-  if (visual.type === "nlp") {
-    const tags = visual.tags || ["NLP", "Text", "ML"];
-    return `
-      <div class="project-visual nlp">
-        ${tags.map(t => `<span>${t}</span>`).join("")}
-      </div>`;
-  }
-  if (visual.type === "dashboard") {
-    return `
-      <div class="project-visual dashboard">
-        <span></span><span></span><span></span><span></span>
-      </div>`;
-  }
+
   return '<div class="project-visual"></div>';
 }
 
@@ -124,9 +100,11 @@ function openProjectModalData(project) {
 
   if (project.links && project.links.length > 0) {
     detailsHTML += `
-      <p class="detail-links">
-        ${project.links.map(l => `<a href="${l.url}" target="_blank" rel="noreferrer">${l.label}</a>`).join(" ")}
-      </p>`;
+      <div class="modal-links">
+        <p class="detail-links">
+          ${project.links.map(l => `<a href="${l.url}" class="modal-btn" target="_blank" rel="noreferrer">${l.label}</a>`).join(" ")}
+        </p>
+      </div>`;
   }
 
   projectModalDetails.innerHTML = detailsHTML;
@@ -160,10 +138,11 @@ if (projectModal) {
   });
 }
 
-/* Render Projects on projects.html and index.html */
+/* Render Projects and Filters on projects.html and index.html */
 async function initProjects() {
   const projectsContainer = document.querySelector("[data-projects-container]");
   const featuredContainer = document.querySelector("[data-featured-source]");
+  const filterBar = document.querySelector("#filter-bar");
 
   if (!projectsContainer && !featuredContainer) return;
 
@@ -171,14 +150,15 @@ async function initProjects() {
     const response = await fetch("lib/projects.json");
     const projects = await response.json();
 
-    // 1. Render all projects on projects.html
-    if (projectsContainer) {
-      projectsContainer.innerHTML = projects.map(p => `
+    const renderCards = (items) => {
+      if (!projectsContainer) return;
+      projectsContainer.innerHTML = items.map(p => `
         <article id="${p.id}" class="case-study" ${p.featured ? 'data-featured="true"' : ""}>
           <p class="project-type">${p.type}</p>
           <h2>${p.title}</h2>
           ${createVisualHTML(p.visual, p.title)}
           <p>${p.summary}</p>
+          ${p.badge ? `<span class="card-status-badge">${p.badge}</span>` : ""}
           <div class="project-meta">
             <span>${p.tags ? p.tags.join(", ") : ""}</span>
             <strong>${p.year}</strong>
@@ -189,19 +169,45 @@ async function initProjects() {
       projectsContainer.querySelectorAll(".case-study").forEach((card, idx) => {
         card.addEventListener("click", (e) => {
           if (e.target.closest("a")) return;
-          openProjectModalData(projects[idx]);
+          openProjectModalData(items[idx]);
         });
       });
+    };
 
-      // Handle direct hash navigation (e.g., projects.html#neutrino)
-      if (window.location.hash) {
-        const targetId = window.location.hash.substring(1);
-        const match = projects.find(p => p.id === targetId);
-        if (match) openProjectModalData(match);
+    if (projectsContainer) {
+      renderCards(projects);
+
+      if (filterBar) {
+        const categories = ["All", "ML", "Data Visualization", "Web Development", "Embedded Systems"];
+        const years = [...new Set(projects.map(p => p.year))].sort((a, b) => b - a);
+
+        const allFilters = ["All", ...categories.filter(c => c !== "All"), ...years];
+        
+        filterBar.innerHTML = allFilters.map(f => `
+          <button class="filter-btn ${f === 'All' ? 'active' : ''}" data-filter="${f}">${f}</button>
+        `).join("");
+
+        filterBar.querySelectorAll(".filter-btn").forEach(btn => {
+          btn.addEventListener("click", (e) => {
+            filterBar.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+            e.target.classList.add("active");
+
+            const filter = e.target.getAttribute("data-filter");
+            
+            if (filter === "All") {
+              renderCards(projects);
+            } else if (!isNaN(filter)) {
+              const filtered = projects.filter(p => p.year.toString() === filter);
+              renderCards(filtered);
+            } else {
+              const filtered = projects.filter(p => p.type.toLowerCase().includes(filter.toLowerCase()));
+              renderCards(filtered);
+            }
+          });
+        });
       }
     }
 
-    // 2. Render featured projects on index.html
     if (featuredContainer) {
       const featured = projects.filter(p => p.featured);
       featuredContainer.innerHTML = featured.map(p => `
@@ -210,6 +216,7 @@ async function initProjects() {
           <p class="project-type">${p.type}</p>
           <h3>${p.title}</h3>
           <p>${p.summary}</p>
+          ${p.badge ? `<span class="card-status-badge">${p.badge}</span>` : ""}
         </article>
       `).join("");
 

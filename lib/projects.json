@@ -19,7 +19,7 @@
     },
     "tags": ["Python", "scikit-learn", "XGBoost", "Docker"],
     "links": [
-      { "label": "GitHub Repo", "url": "https://github.com/YooNice100/Majorana-Neutrino-Hunt" },
+      { "label": "GitHub", "url": "https://github.com/YooNice100/Majorana-Neutrino-Hunt" },
       { "label": "Project Site", "url": "https://yoonice100.github.io/majorana-neutrino-hunt-website/" }
     ]
   },
@@ -30,7 +30,9 @@
     "year": 2025,
     "featured": true,
     "visual": {
-      "type": "forecast"
+      "type": "image",
+      "src": "assets/recipes.webp",
+      "alt": "Recipe Simplicity Analysis project screenshot"
     },
     "summary": "Analyzed Food.com recipe data to find which recipe types need fewer steps, then built a model to predict step count from recipe features.",
     "details": {
@@ -41,7 +43,7 @@
     },
     "tags": ["Python", "pandas", "scikit-learn"],
     "links": [
-      { "label": "GitHub Repo", "url": "https://github.com/nomin709/analysis_for_recipes" },
+      { "label": "GitHub", "url": "https://github.com/nomin709/analysis_for_recipes" },
       { "label": "Project Site", "url": "https://nomin709.github.io/analysis_for_recipes/" }
     ]
   },
@@ -52,7 +54,9 @@
     "year": 2025,
     "featured": true,
     "visual": {
-      "type": "dashboard"
+      "type": "image",
+      "src": "assets/hospital-stay.webp",
+      "alt": "Hospital Stay Predictors project screenshot"
     },
     "summary": "Built an interactive, scrollytelling site exploring which preoperative and demographic factors most affect how long patients stay in the hospital.",
     "details": {
@@ -63,7 +67,7 @@
     },
     "tags": ["D3.js", "Chart.js", "JavaScript"],
     "links": [
-      { "label": "GitHub Repo", "url": "https://github.com/beseo/DSC106-Final-Project" },
+      { "label": "GitHub", "url": "https://github.com/beseo/DSC106-Final-Project" },
       { "label": "Project Site", "url": "https://beseo.github.io/DSC106-Final-Project/" }
     ]
   },
@@ -75,7 +79,7 @@
     "featured": false,
     "visual": {
       "type": "image",
-      "src": "assets/bikewatching.png",
+      "src": "assets/bikewatching.webp",
       "alt": "bikewatching project screenshot"
     },
     "summary": "An immersive, interactive map visualization of bike traffic in the Boston area during different times of the day, with a time-of-day slider to filter trips.",
@@ -87,7 +91,7 @@
     },
     "tags": ["JavaScript", "D3.js", "Mapbox GL"],
     "links": [
-      { "label": "GitHub Repo", "url": "https://github.com/nomin709/bikewatching" },
+      { "label": "GitHub", "url": "https://github.com/nomin709/bikewatching" },
       { "label": "Project Site", "url": "https://nomin709.github.io/bikewatching/" }
     ]
   },
@@ -97,8 +101,9 @@
     "type": "Web Development",
     "year": 2026,
     "featured": false,
+    "badge": "In Progress",
     "visual": {
-      "type": "nlp",
+      "type": "dashboard",
       "tags": ["HTML", "CSS", "JS", "Design"]
     },
     "summary": "The personal portfolio site you're browsing right now, hand-built with a custom light/dark theme, retro pixel styling, and interactive project popups.",
@@ -110,7 +115,7 @@
     },
     "tags": ["HTML", "CSS", "JavaScript"],
     "links": [
-      { "label": "GitHub Repo", "url": "https://github.com/nomin709/portfolio-website" },
+      { "label": "GitHub", "url": "https://github.com/nomin709/portfolio-website" },
       { "label": "Project Site", "url": "https://nomin709.github.io/portfolio-website/" }
     ]
   },
@@ -134,8 +139,7 @@
     },
     "tags": ["Python", "pandas", "Matplotlib", "Plotly"],
     "links": [
-      { "label": "GitHub Repo", "url": "#" },
-      { "label": "Project Report", "url": "#" }
+      { "label": "Project Notebook", "url": "#" }
     ]
   },
   {
@@ -144,6 +148,7 @@
     "type": "Embedded Systems · TinyML · IoT",
     "year": 2026,
     "featured": false,
+    "badge": "Updating",
     "visual": {
       "type": "cluster"
     },
@@ -156,18 +161,20 @@
     },
     "tags": ["C++", "ESP32", "Python", "TinyML", "Plotly Dash"],
     "links": [
-      { "label": "GitHub Repo", "url": "#" },
+      { "label": "GitHub", "url": "#" },
       { "label": "Interactive Dashboard", "url": "#" }
     ]
   },
   {
     "id": "ds-career-analysis",
-    "title": "Career Landscape in Data Science & ML",
+    "title": "Career Analysis in Data Science & ML Fields",
     "type": "Data Analysis · EDA",
     "year": 2024,
     "featured": false,
     "visual": {
-      "type": "cluster"
+      "type": "image",
+      "src": "assets/ds-career-analysis2.webp",
+      "alt": "Data Science ML and programming language usage graphs"
     },
     "summary": "Conducted an exploratory data analysis on 20,000+ global Kaggle survey responses to uncover industry hiring requirements, compensation drivers, and technical tooling trends.",
     "details": {
@@ -178,29 +185,31 @@
     },
     "tags": ["R", "ggplot2", "dplyr", "tidyr", "EDA"],
     "links": [
-      { "label": "GitHub Repo", "url": "#" },
-      { "label": "Project Report", "url": "#" }
+      { "label": "GitHub", "url": "#" },
+      { "label": "View R Markdown Report", "url": "#" }
     ]
   },
   {
     "id": "snowfall-prediction",
     "title": "Predictive Modeling of Daily Snowfall",
-    "type": "Machine Learning · Environmental Data Science",
+    "type": "ML · Environmental Data Science",
     "year": 2024,
     "featured": false,
     "visual": {
-      "type": "cluster"
+      "type": "image",
+      "src": "assets/snowfall-prediction.webp",
+      "alt": "Snowfall Prediction project graphs showing predicted vs actual snowfall"
     },
-    "summary": "Trained Random Forest and XGBoost regression models on 49 years of Sierra Nevada climate data to predict daily snowfall accumulation from temperature and humidity patterns[cite: 6].",
+    "summary": "Trained Random Forest and XGBoost regression models on 49 years of Sierra Nevada climate data to predict daily snowfall accumulation from temperature and humidity patterns.",
     "details": {
-      "overview": "A data science study analyzing 11,444 winter-season daily records (1970–2019) from UC Berkeley's Central Sierra Snow Lab and NOAA weather stations to model non-linear precipitation dynamics for California water management[cite: 6].",
-      "problem": "accurately estimate total daily snowfall depth (cm) in the Sierra Nevada during snow-prone months (October through May) using surface temperature and humidity features[cite: 6].",
-      "methods": "multi-source dataset merging, seasonal filtering, zero-inflation analysis, EDA, Random Forest Regression, and XGBoost modeling (Python, pandas, scikit-learn, XGBoost, seaborn)[cite: 6].",
-      "outcome": "XGBoost achieved an RMSE of 7.42 cm and an R² of 0.490, highlighting maximum temperature and relative humidity as primary predictors while identifying the challenges of extreme tail-event underprediction[cite: 6]."
+      "overview": "A data science study analyzing 11,444 winter-season daily records (1970–2019) from UC Berkeley's Central Sierra Snow Lab and NOAA weather stations to model non-linear precipitation dynamics for California water management.",
+      "problem": "accurately estimate total daily snowfall depth (cm) in the Sierra Nevada during snow-prone months (October through May) using surface temperature and humidity features.",
+      "methods": "multi-source dataset merging, seasonal filtering, zero-inflation analysis, EDA, Random Forest Regression, and XGBoost modeling (Python, pandas, scikit-learn, XGBoost, seaborn).",
+      "outcome": "XGBoost achieved an RMSE of 7.42 cm and an R² of 0.490, highlighting maximum temperature and relative humidity as primary predictors while identifying the challenges of extreme tail-event underprediction."
     },
     "tags": ["Python", "scikit-learn", "XGBoost", "pandas", "seaborn"],
     "links": [
-      { "label": "GitHub Repo", "url": "#" },
+      { "label": "GitHub", "url": "#" },
       { "label": "Project Notebook", "url": "#" }
     ]
   }

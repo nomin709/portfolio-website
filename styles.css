@@ -43,10 +43,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background:
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    #f5f7df;
+  background:#f5f7df;
   background-size: 18px 18px;
   color: var(--ink);
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -55,10 +52,7 @@ body {
 }
 
 body.dark-theme {
-  background:
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    #0b1714;
+  background:#0b1714;
 }
 
 body.modal-open {
@@ -390,7 +384,12 @@ h3 {
 }
 
 .section {
-  padding: clamp(34px, 5vw, 56px) 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.about-section {
+  padding-bottom: 5px; /* Keeps the bottom cards safely spaced while pulling Featured Projects up */
 }
 
 .section-inner {
@@ -400,10 +399,7 @@ h3 {
 
 .intro-band,
 .muted-section {
-  background:
-    linear-gradient(90deg, rgba(31, 122, 140, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(31, 122, 140, 0.08) 1px, transparent 1px),
-    #eff8cf;
+  background:#eff8cf;
   background-size: 16px 16px;
 }
 
@@ -537,10 +533,7 @@ h3 {
   position: relative;
   min-height: 165px;
   overflow: hidden;
-  background:
-    linear-gradient(90deg, rgba(31, 122, 140, 0.1) 1px, transparent 1px),
-    linear-gradient(rgba(31, 122, 140, 0.1) 1px, transparent 1px),
-    #eaf1f0;
+  background:#eaf1f0;
   background-size: 14px 14px;
   border: 2px solid rgba(31, 122, 140, 0.36);
   border-radius: 6px;
@@ -632,10 +625,7 @@ h3 {
 
 .stats-band {
   color: #ffffff;
-  background:
-    linear-gradient(90deg, rgba(255, 226, 109, 0.1) 1px, transparent 1px),
-    linear-gradient(rgba(255, 226, 109, 0.1) 1px, transparent 1px),
-    var(--charcoal);
+  background: var(--charcoal);
   background-size: 18px 18px;
 }
 
@@ -918,6 +908,35 @@ h3 {
 .project-modal-meta strong {
   color: #dce9ec;
   font-family: "VT323", "Inter", system-ui, sans-serif;
+}
+
+/* --- Modal Action Buttons --- */
+.modal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.modal-btn {
+  display: inline-block;
+  padding: 4px 12px;
+  font-family: "VT323", "Inter", system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--charcoal);
+  background: var(--sun);
+  border: 2px solid var(--line);
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 var(--line);
+  transition: transform 0.1s ease, background-color 0.1s ease;
+}
+
+.modal-btn:hover {
+  transform: translate(-1px, -1px);
+  background: #fff6ba;
+  box-shadow: 2px 2px 0 var(--line);
 }
 
 .resume-card {
@@ -1232,4 +1251,57 @@ a[href*="github"] {
     min-height: 620px;
     height: 620px;
   }
+}
+
+/* --- Project Filter Bar --- */
+.project-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.filter-btn {
+  padding: 6px 14px;
+  font-family: "VT323", "Inter", system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--panel);
+  border: 2px solid var(--line);
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--line);
+  transition: transform 0.1s ease, background-color 0.1s ease;
+}
+
+.filter-btn:hover {
+  transform: translate(-1px, -1px);
+  background: #fff6ba;
+}
+
+.filter-btn.active {
+  background: var(--sun);
+  color: var(--charcoal);
+  box-shadow: 3px 3px 0 var(--line);
+}
+
+/* --- Card Status Badge (Bottom Right) --- */
+.card-status-badge {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  padding: 3px 8px;
+  color: var(--charcoal);
+  font-family: "VT323", "Inter", system-ui, sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--sun);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 2;
+  box-shadow: 2px 2px 0 rgba(19, 38, 45, 0.15);
 }
