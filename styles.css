@@ -504,7 +504,7 @@ body.dark-theme .project-type {
 }
 .stats-grid strong { 
   display: block; 
-  font-size: 1.4rem; 
+  font-size: 1rem; 
   font-weight: 700;
   color: var(--ink); 
   text-transform: uppercase;
@@ -514,7 +514,7 @@ body.dark-theme .project-type {
   display: block; 
   color: var(--muted); 
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.95rem; 
+  font-size: 0.9rem; 
 }
 
 /* Modal CSS */
