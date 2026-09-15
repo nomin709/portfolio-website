@@ -141,7 +141,6 @@ if (projectModal) {
 async function initProjects() {
   const projectsContainer = document.querySelector("[data-projects-container]");
   const featuredContainer = document.querySelector("[data-featured-source]");
-  const filterBar = document.querySelector("#filter-bar");
 
   if (!projectsContainer && !featuredContainer) return;
 
@@ -152,10 +151,10 @@ async function initProjects() {
     const renderCards = (items) => {
       if (!projectsContainer) return;
       projectsContainer.innerHTML = items.map(p => `
-        <article id="${p.id}" class="case-study" ${p.featured ? 'data-featured="true"' : ""}>
-          <p class="project-type">${p.type}</p>
+        <article id="${p.id}" class="case-study" data-year="${p.year}" ${p.featured ? 'data-featured="true"' : ""}>
           <h2>${p.title}</h2>
           ${createVisualHTML(p.visual, p.title)}
+          <p class="project-type">${p.type}</p>
           <p>${p.summary}</p>
           ${p.badge ? `<span class="card-status-badge">${p.badge}</span>` : ""}
           <div class="project-meta">
@@ -175,36 +174,6 @@ async function initProjects() {
 
     if (projectsContainer) {
       renderCards(projects);
-
-      if (filterBar) {
-        const categories = ["All", "ML", "Data Visualization", "Web Development", "Embedded Systems"];
-        const years = [...new Set(projects.map(p => p.year))].sort((a, b) => b - a);
-
-        const allFilters = ["All", ...categories.filter(c => c !== "All"), ...years];
-        
-        filterBar.innerHTML = allFilters.map(f => `
-          <button class="filter-btn ${f === 'All' ? 'active' : ''}" data-filter="${f}">${f}</button>
-        `).join("");
-
-        filterBar.querySelectorAll(".filter-btn").forEach(btn => {
-          btn.addEventListener("click", (e) => {
-            filterBar.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-            e.target.classList.add("active");
-
-            const filter = e.target.getAttribute("data-filter");
-            
-            if (filter === "All") {
-              renderCards(projects);
-            } else if (!isNaN(filter)) {
-              const filtered = projects.filter(p => p.year.toString() === filter);
-              renderCards(filtered);
-            } else {
-              const filtered = projects.filter(p => p.type.toLowerCase().includes(filter.toLowerCase()));
-              renderCards(filtered);
-            }
-          });
-        });
-      }
     }
 
     if (featuredContainer) {
@@ -229,3 +198,84 @@ async function initProjects() {
 }
 
 document.addEventListener("DOMContentLoaded", initProjects);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdown = document.getElementById('sort-dropdown');
+  const trigger = dropdown.querySelector('.dropdown-trigger');
+  const label = dropdown.querySelector('.dropdown-label');
+  const items = dropdown.querySelectorAll('.dropdown-item');
+  
+  // Grab the container that holds your project cards
+  const grid = document.querySelector('.project-list'); 
+
+  // 1. Toggle Menu Open/Close
+  trigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    dropdown.classList.toggle('open');
+  });
+
+  // 2. Handle Item Clicks
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      // Update active visual state
+      items.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+      
+      // Update the label text (removes the "year: " part for a cleaner look)
+      const rawText = item.innerText.replace('year: ', '');
+      label.innerText = `sort by: ${rawText}`;
+      
+      // Close the menu
+      dropdown.classList.remove('open');
+      
+      // Trigger the sort function
+      runSort();
+    });
+  });
+
+  // 3. Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#sort-dropdown')) {
+      dropdown.classList.remove('open');
+    }
+  });
+
+  // --- THE SORT ENGINE ---
+  function runSort() {
+    // Check which option is currently active
+    const activeSort = dropdown.querySelector('.dropdown-item.active').dataset.value;
+    
+    // Select all projects
+    const projects = Array.from(document.querySelectorAll('.case-study'));
+
+    // Sort the array of HTML elements
+    projects.sort((a, b) => {
+      const yearA = parseInt(a.dataset.year || 0);
+      const yearB = parseInt(b.dataset.year || 0);
+      
+      if (activeSort === 'featured') {
+        // Check if the items are featured (returns 1 if true, 0 if false)
+        const isFeaturedA = a.dataset.featured === 'true' ? 1 : 0;
+        const isFeaturedB = b.dataset.featured === 'true' ? 1 : 0;
+        
+        // If one is featured and the other isn't, put the featured one first
+        if (isFeaturedA !== isFeaturedB) {
+          return isFeaturedB - isFeaturedA; 
+        }
+        
+        // If both are featured (or neither is featured), fall back to sorting by newest year
+        return yearB - yearA;
+      } 
+      
+      // Standard year sorting
+      else if (activeSort === 'year-desc') {
+        return yearB - yearA;
+      } else {
+        return yearA - yearB; // year-asc
+      }
+    });
+
+    // Re-append the elements to the grid in their new order
+    projects.forEach(project => grid.appendChild(project));
+  }
+});

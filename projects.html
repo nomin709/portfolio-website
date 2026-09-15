@@ -7,7 +7,7 @@
   <title>Projects | Nomin Batjargal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,11 +16,12 @@
     
     <!-- LEFT SIDEBAR -->
     <aside class="app-sidebar">
+      <span class="greeting">Hello! My name is</span>
       <a class="brand" href="index.html">
         Nomin<br>Batjargal
       </a>
       <p class="hero-copy">
-        I turn messy data into clear models, readable dashboards, and practical recommendations for teams that need evidence before action. I enjoy combining statistics, machine learning, visualization, and storytelling to build work that people can trust.
+        I am a recent Data Science graduate from UCSD. I specialize in turning complex data into clear, actionable insights through machine learning, statistical modeling, and interactive visualization.
       </p>
       <div class="sidebar-contacts">
         <div class="hero-contact" aria-label="Contact information">
@@ -64,7 +65,22 @@
           <div class="section-heading project-page-heading">
             <h2>Projects</h2>
             <p>Click any project to see more details, including links to the code and live site where available.</p>
-            <div class="project-filter-bar" id="filter-bar"></div>
+            <div class="filters-container">
+              <!-- Sort Dropdown (Single Select) -->
+              <div class="custom-dropdown" id="sort-dropdown" data-type="single">
+                <button class="dropdown-trigger">
+                  <span class="dropdown-label">sort by: featured</span>
+                  <svg class="chevron" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 1l5 5 5-5"/>
+                  </svg>
+                </button>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item active" data-value="featured">featured</li>
+                  <li class="dropdown-item" data-value="year-desc">year: newest</li>
+                  <li class="dropdown-item" data-value="year-asc">year: oldest</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
 

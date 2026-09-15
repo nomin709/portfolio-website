@@ -50,9 +50,8 @@
   {
     "id": "hospital-stay",
     "title": "Hospital Stay Predictors",
-    "type": "Interactive Visualization",
+    "type": "Interactive Visualization · EDA",
     "year": 2025,
-    "featured": true,
     "visual": {
       "type": "image",
       "src": "assets/hospital-stay.webp",
