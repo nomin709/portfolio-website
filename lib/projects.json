@@ -102,10 +102,11 @@
     "featured": false,
     "badge": "In Progress",
     "visual": {
-      "type": "dashboard",
-      "tags": ["HTML", "CSS", "JS", "Design"]
+      "type": "image",
+      "src": "assets/portfolio.webp",
+      "alt": "Personal portfolio website screenshot"
     },
-    "summary": "The personal portfolio site you're browsing right now, hand-built with a custom light/dark theme, retro pixel styling, and interactive project popups.",
+    "summary": "The personal portfolio site you're browsing right now, hand-built with a custom light/dark theme, styling, and interactive project popups.",
     "details": {
       "overview": "A fully custom personal site with no frameworks, covering the homepage, project showcase, and embedded resume, styled around a distinct pixel/retro visual identity.",
       "problem": "needed a personal site to showcase projects, resume, and contact info with a distinct look.",
@@ -137,31 +138,30 @@
       "outcome": "identified a strong positive correlation between peak sunshine months and EDM streams, alongside an inverse trend for R&B popularity during high-sunshine summer periods."
     },
     "tags": ["Python", "pandas", "Matplotlib", "Plotly"],
-    "links": [
-      { "label": "Project Notebook", "url": "#" }
-    ]
+    "links": []
   },
   {
     "id": "theremin-ml",
-    "title": "ESP32 Smart Theremin & Gesture ML",
-    "type": "Embedded Systems · TinyML · IoT",
+    "title": "ESP32 Two-Hand Theremin",
+    "type": "Embedded Systems · IoT · Signal Processing",
     "year": 2026,
     "featured": false,
-    "badge": "Updating",
+    "badge": "In Progress",
     "visual": {
-      "type": "cluster"
+      "type": "image",
+      "src": "assets/theremin-viz.webp",
+      "alt": "theremin visualization screenshot"
     },
-    "summary": "Built an end-to-end TinyML gesture recognition system on an ESP32 microcontroller using ultrasonic and optical sensor data to classify physical hand interactions in real time.",
+    "summary": "A contactless two-hand musical instrument built on ESP32 with real-time signal processing — ultrasonic distance controls pitch, photoresistor controls volume, with on-device kinematics and a live Processing dashboard.",
     "details": {
-      "overview": "An 8-phase embedded machine learning project utilizing an ESP32 development board paired with ultrasonic distance and photoresistor modules to collect labeled sensor time-series, benchmark classical ML and deep learning models, and deploy on-device TinyML inference.",
-      "problem": "capture multi-sensor continuous motion data and accurately classify distinct physical hand gestures with low latency on resource-constrained hardware.",
-      "methods": "Arduino/C++ firmware timing optimization, signal filtering, time-domain feature engineering, model benchmarking (classical vs. deep learning), TinyML on-device deployment, and interactive Plotly Dash visualization.",
-      "outcome": "successfully classified 5 core musical gestures (hold, glide, wave, swipe, mute) with real-time feedback and edge inference."
+      "overview": "An ESP32-based theremin that streams structured sensor data at 30Hz over serial. Features exponential smoothing, on-device velocity and acceleration computation, auto-calibration, multi-gesture button control, and a real-time Processing 4 visualization dashboard.",
+      "problem": "Design a low-latency embedded instrument that processes two continuous sensor streams simultaneously, maintains deterministic 30Hz timing, and streams clean structured data for downstream analysis.",
+      "methods": "Non-blocking deterministic loop timing, exponential moving average filtering, on-device kinematic computation, LEDC PWM audio synthesis via PAM8403 amplifier, multi-gesture button state machine, and serial CSV streaming.",
+      "outcome": "Stable 30Hz sensor stream with real-time pitch and volume control, auto-calibrating photoresistor, and live Processing dashboard displaying scrolling time-series graphs and instrument state."
     },
-    "tags": ["C++", "ESP32", "Python", "TinyML", "Plotly Dash"],
+    "tags": ["C++", "ESP32", "Arduino", "Processing", "Signal Processing"],
     "links": [
-      { "label": "GitHub", "url": "#" },
-      { "label": "Interactive Dashboard", "url": "#" }
+      { "label": "GitHub", "url": "https://github.com/nomin709/theremin-ds" }
     ]
   },
   {
@@ -183,10 +183,7 @@
       "outcome": "identified master's degrees as dominant in analytics/business roles (~50%) and PhDs in research (58%); found coding experience positively correlates with salary while ML experience showed negligible standalone correlation; mapped Python (~40%), SQL (~20%), and R (~15%) as top languages alongside linear/logistic regression (25%) and tree ensembles (35%)."
     },
     "tags": ["R", "ggplot2", "dplyr", "tidyr", "EDA"],
-    "links": [
-      { "label": "GitHub", "url": "#" },
-      { "label": "View R Markdown Report", "url": "#" }
-    ]
+    "links": []
   },
   {
     "id": "snowfall-prediction",
@@ -207,9 +204,6 @@
       "outcome": "XGBoost achieved an RMSE of 7.42 cm and an R² of 0.490, highlighting maximum temperature and relative humidity as primary predictors while identifying the challenges of extreme tail-event underprediction."
     },
     "tags": ["Python", "scikit-learn", "XGBoost", "pandas", "seaborn"],
-    "links": [
-      { "label": "GitHub", "url": "#" },
-      { "label": "Project Notebook", "url": "#" }
-    ]
+    "links": []
   }
 ]
